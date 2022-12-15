@@ -92,7 +92,7 @@ function shouldResolve() {
     return Math.random() < 0.85
 }
 
-function searchUsers(name, age) {
+function searchUser(name, age) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (shouldResolve()) {
