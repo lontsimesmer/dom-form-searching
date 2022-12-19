@@ -39,6 +39,7 @@ label {
 button {
   background-color: #e6e6fa;
   border: 1px solid #ccc;
+  cursor: pointer;
   font-size: 18px;
   margin: 20px;
   margin-left: 0;
@@ -78,4 +79,12 @@ hr {
 
 .status {
   padding: 10px;
+}
+
+.icon {
+  display: flex;
+  left: 60%;
+  font-size: 30px;
+  padding-top: 30px;
+  padding-left: 50%;
 }
