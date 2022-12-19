@@ -57,8 +57,8 @@ const form = document.querySelector('form')
 const userContent = document.querySelector('.users')
 
 function getInitials ({ name }) {
-    return name.split(' ').map((n) => n[0]).slice(0, 2).join('.')
-  }
+  return name.split(' ').map((n) => n[0]).slice(0, 2).join('.')
+}
 
 function displayUser ({ age, name }) {
   return `<div class="users">
@@ -77,12 +77,12 @@ function displayUser ({ age, name }) {
 
 function displayUsers (person) {
   return person.length
-  ? person.map(displayUser).join('') 
-  : renderMessage('Sorry! No user found');
+    ? person.map(displayUser).join('')
+    : renderMessage('Sorry! No user found');;
 }
 
 function compareNames (name, searchTerm) {
-  return name.toLowerCase().includes(searchTerm.toLowerCase());
+  return name.toLowerCase().includes(searchTerm.toLowerCase());;
 }
 
 /* function searchUsers (name, age) {
@@ -97,21 +97,22 @@ function shouldResolve () {
 
 function searchUser (name, age) {
   return new Promise((resolve, reject) => {
-    setTimeout (() => {
+    setTimeout(() => {
       if (shouldResolve()) {
-        resolve (
+        resolve(
           persons.filter(
             (users) =>
               (!name || compareNames(users.name, name)) &&
                 (!age || users.age === age)
           )
-        );;
+        );;;
 
       } else {
-        reject (([]));;
+        reject (new Error([]));;;
       }
-    }, 2000);
-  });;
+    }, 2000);;
+  });;;
+
 }
 
 /* function loader () {
@@ -119,19 +120,22 @@ function searchUser (name, age) {
 } */
 
 function renderMessage (message) {
-  return `<div class="message">${message}</div>`;;
+  return `<div class="message">${message}</div>`;;;
+
 }
 
-userContent.innerHTML = displayUsers (persons)
+userContent.innerHTML = displayUsers(persons)
 
-form.addEventListener ('submit', (e) => {
-  e.preventDefault();;
+form.addEventListener('submit', (e) => {
+  e.preventDefault();;;
   userContent.innerHTML = renderMessage('Searching users...');;
   searchUser(e.target.name.value, +e.target.age.value)
     .then((result) => {
-      userContent.innerHTML = displayUser(result);;
+      userContent.innerHTML = displayUser(result);;;
+
     })
     .catch((e) => {
       userContent.innerHTML = renderMessage('Error loading users! Please try Again')
-    });;
+    });;;
+    
 });;
