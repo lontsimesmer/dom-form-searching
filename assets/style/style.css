@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.pagecontent {
+  align-items: center;
+  background: #f0e68c;
+  border: 1px solid #f0e68c;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
+  max-width: 100%;
+  padding: 20px;
+  width: 750px;
+}
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+  height: 40px;
+  padding: 4px 15px;
+  width: 100%;
+}
+
+.input-field {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  line-height: 2;
+  margin-bottom: 40px;
+}
+
+button {
+  background-color: #e6e6fa;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: -30px;
+  padding: 10px 40px;
+}
+
+.box {
+  align-items: center;
+  background: #f0fff0;
+  border-radius: 10px;
+  display: flex;
+  font-size: 15px;
+  gap: 15px;
+  justify-content: space-between;
+  line-height: 1.5;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+
+.user-field {
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  gap: 10px;
+  justify-content: center;
+}
+
+.initials {
+  align-items: center;
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  height: 70px;
+  justify-content: center;
+  text-align: center;
+  width: 70px;
+}
+
+.fa-window-close {
+  cursor: pointer;
+  font-size: 30px;
+}
