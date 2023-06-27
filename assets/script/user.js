@@ -6,7 +6,7 @@ const persons = [
   { name: 'Antengue Collince', age: 27 },
   { name: 'Antsiwoe Nathan', age: 35 },
   { name: 'Assoe Jean-baptist', age: 40 },
-  { name: 'Badawe Leonard', age: 27 },
+  { name: 'Badawe Leonard', age: 28 },
   { name: 'Bambe Simon', age: 29 },
   { name: 'Bang Ivan', age: 26 },
   { name: 'Beda Yaro', age: 28 },
@@ -23,7 +23,7 @@ const persons = [
   { name: 'Kamgang Martin', age: 21 },
   { name: 'Kambong Franklin', age: 34 },
   { name: 'Langle Benoit', age: 30 },
-  { name: 'Linjoum Inoussa', age: 27 },
+  { name: 'Linjoum Inoussa', age: 28 },
   { name: 'Lontsi Nathanaël', age: 24 },
   { name: 'Mafouzem Alida', age: 25 },
   { name: 'Mapon Charlotte', age: 23 },
@@ -50,7 +50,7 @@ const persons = [
   { name: 'Tang Laurent', age: 27 },
   { name: 'Tchapchet Brown', age: 28 },
   { name: 'Yimga Cabrel', age: 25 },
-  { name: 'Zebidja Legrand', age: 26 }
+  { name: 'Zebidja Legrand', age: 27 }
 ]
 
 const form = document.querySelector('form')
