@@ -41,7 +41,7 @@ const persons = [
   { name: "Mogba Charly", age: 31 },
   { name: "Moguem Michelle", age: 25 },
   { name: "Nanga Clemence", age: 22 },
-  { name: "Nanga Quentin", age: 27 },
+  { name: "Nanga Quentin", age: 28 },
   { name: "Ndouang Marc", age: 27 },
   { name: "Ngoumenewe Leticia", age: 24 },
   { name: "Olinga Stevy", age: 28 },
@@ -117,9 +117,9 @@ function searchUser(name, age) {
   });
 }
 
-/* function loader () {
-    return '<div class="load"></div>'
-  } */
+function loader() {
+  return '<div class="load"></div>';
+}
 
 function renderMessage(message) {
   return `<div class="message">${message}</div>`;
