@@ -6,7 +6,7 @@ const persons = [
   { name: "Antengue Collince", age: 27 },
   { name: "Antsiwoe Nathan", age: 35 },
   { name: "Assoe Jean-baptist", age: 40 },
-  { name: "Badawe Leonard", age: 27 },
+  { name: "Badawe Leonard", age: 28 },
   { name: "Bambe Simon", age: 29 },
   { name: "Bang Ivan", age: 26 },
   { name: "Beda Yaro", age: 28 },
