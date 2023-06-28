@@ -13,38 +13,40 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-    <title>DOM Form and Search</title>
+    <title>Form Searching</title>
   </head>
-
   <body>
-    <div class="pagecontent">
+    <div class="container">
       <form action="">
-        <div class="input-field">
+        <div class="container1">
           <div>
-            <label for="name"><b>Name</b></label>
+            <label for="name">Name</label><br />
             <input type="text" placeholder="Enter name here" name="name" />
           </div>
           <div>
-            <label for="age"><b>Age</b></label>
+            <label for="age">Age</label><br />
             <input type="number" placeholder="Enter age here" name="age" />
           </div>
-          <button>Search</button>
+          <div>
+            <button type="submit">Search</button>
+          </div>
         </div>
         <div class="users">
-          <div class="box">
-            <div class="user-field">
-              <div class="initials"></div>
+          <div class="person">
+            <div class="box">
+              <div class="avatar"></div>
               <div class="status">
                 <h2>Name</h2>
-                <p>Age</p>
+                <p class="para">Age</p>
               </div>
             </div>
+            <i class="fa fa-window-close" aria-hidden="true"></i>
           </div>
-          <i class="fa fa-window-close" aria-hidden="true"></i>
         </div>
       </form>
     </div>
 
     <script src="assets/script/user.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2/src/fuse.min.js"></script> -->
   </body>
 </html>

@@ -1,4 +1,4 @@
-const persons = [
+const person = [
   { name: "Abanda Martial", age: 45 },
   { name: "Albertini Pondji", age: 25 },
   { name: "Amboya Saf", age: 30 },
@@ -51,92 +51,89 @@ const persons = [
   { name: "Tchapchet Brown", age: 28 },
   { name: "Yimga Cabrel", age: 25 },
   { name: "Zebidja Legrand", age: 26 },
-];
+]
 
-const form = document.querySelector("form");
-const userContent = document.querySelector(".users");
+const mesmer = { keys: ['name', 'age'] }
 
-function getInitials({ name }) {
+const form = document.querySelector('form')
+const userContainer = document.querySelector('.person')
+
+function getInitial (name) {
   return name
-    .split(" ")
+    .split(' ')
     .map((n) => n[0])
     .slice(0, 2)
-    .join(".");
+    .join('.')
 }
 
-function displayUser({ age, name }) {
-  return `<div class="users">
-      <div class="box">
-      <div class="user-field">
-        <div class="initials">${getInitials({ name })}</div>
-          <div class="status">
-            <h2>${name}</h2>
-            <p>${age} years old${age < 1 ? "s" : ""}</p>
-          </div>
-          </div>
-            <i class="fa fa-window-close" aria-hidden="true"></i>
+function displayUser ({ age, name }) {
+  return `
+  <div class="user">
+    <div class='person'>
+     <div class="box">
+      <div class='avatar'>${getInitial(name)}</div>
+        <div>
+          <h2>${name}</h2>
+          <p>${age} year${age > 1 ? 's' : ''}</p>
+        </div>
       </div>
-  </div>`;
+      <i class="fa fa-window-close" aria-hidden="true"></i>
+    </div>
+  </div>
+`
 }
 
-function displayUsers(person) {
-  return person.length
-    ? person.map(displayUser).join("")
-    : renderMessage("Sorry! No user found");
+function displayUsers (persons) {
+  return persons.length
+    ? persons.map(displayUser).join('')
+    : renderMessage('Sorry! No User Found')
 }
 
-function compareNames(name, searchTerm) {
-  return name.toLowerCase().includes(searchTerm.toLowerCase());
+function compareNames (name, searchTerm) {
+  return name.toLowerCase().includes(searchTerm.toLowerCase())
 }
 
-/* function searchUsers (name, age) {
-    return persons.filter(
-      (user) => (!name || compareNames(user.name, name)) && (!age || user.age === age)
-    )
-  } */
-
-function shouldResolve() {
-  return Math.random() < 0.85;
+function shouldResolve () {
+  return Math.random() < 0.85
 }
 
-function searchUser(name, age) {
+function searchUsers (name, age) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve()) {
         resolve(
-          persons.filter(
-            (users) =>
-              (!name || compareNames(users.name, name)) &&
-              (!age || users.age === age)
+          person.filter(
+            (user) =>
+              !name | compareNames(user.name, name) &&
+              (!age || user.age === age)
           )
-        );
+        )
       } else {
-        reject(new Error([]));
+        reject(new Error([]))
       }
-    }, 2000);
-  });
+    }, 2000)
+  })
 }
 
-function loader() {
-  return '<div class="load"></div>';
+function loader () {
+  return '<div class="load"></div>'
+}
+function renderMessage (message) {
+  return `<div class='message'>${message}</div>`
 }
 
-function renderMessage(message) {
-  return `<div class="message">${message}</div>`;
-}
+userContainer.innerHTML = displayUsers(person)
 
-userContent.innerHTML = displayUsers(persons);
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  userContent.innerHTML = renderMessage("Searching users...");
-  searchUser(e.target.name.value, +e.target.age.value)
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  userContainer.innerHTML = loader()
+  searchUsers(e.target.name.value, +e.target.age.value)
     .then((result) => {
-      userContent.innerHTML = displayUser(result);
+      userContainer.innerHTML = displayUsers(result)
     })
     .catch((e) => {
-      userContent.innerHTML = renderMessage(
-        "Error loading users! Please try Again"
-      );
-    });
-});
+      userContainer.innerHTML = renderMessage(
+        'Error loading users! Please try again'
+      )
+    })
+})
