@@ -53,8 +53,6 @@ const person = [
   { name: "Zebidja Legrand", age: 26 },
 ]
 
-const mesmer = { keys: ['name', 'age'] }
-
 const form = document.querySelector('form')
 const userContainer = document.querySelector('.person')
 
@@ -68,16 +66,17 @@ function getInitial (name) {
 
 function displayUser ({ age, name }) {
   return `
-  <div class="user">
+  <div class="user" id="id05">
     <div class='person'>
-     <div class="box">
-      <div class='avatar'>${getInitial(name)}</div>
-        <div>
-          <h2>${name}</h2>
-          <p>${age} year${age > 1 ? 's' : ''}</p>
+      <div class="box">
+        <div class='avatar'>${getInitial(name)}</div>
+          <div>
+            <h2>${name}</h2>
+            <p>${age} year${age > 1 ? 's' : ''}</p>
+          </div>
         </div>
+        <i class="fa fa-window-close" aria-hidden="true"></i>
       </div>
-      <i class="fa fa-window-close" aria-hidden="true"></i>
     </div>
   </div>
 `
@@ -115,9 +114,6 @@ function searchUsers (name, age) {
   })
 }
 
-function loader () {
-  return '<div class="load"></div>'
-}
 function renderMessage (message) {
   return `<div class='message'>${message}</div>`
 }
@@ -126,7 +122,7 @@ userContainer.innerHTML = displayUsers(person)
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
-  userContainer.innerHTML = loader()
+  userContainer.innerHTML = renderMessage('Searching user....')
   searchUsers(e.target.name.value, +e.target.age.value)
     .then((result) => {
       userContainer.innerHTML = displayUsers(result)
