@@ -55,6 +55,12 @@ input {
   padding: 10px 40px;
 }
 
+.search-btn:hover {
+  background-color: #228b22;
+  color: #f0fff0;
+  transition: 0.4s ease-in-out;
+}
+
 .person {
   align-items: center;
   border-radius: 10px;
@@ -114,4 +120,24 @@ input {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+#loader {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+}
+
+#results-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
