@@ -53,83 +53,114 @@ const person = [
   { name: "Zebidja Legrand", age: 26 },
 ]
 
-const form = document.querySelector('form')
-const userContainer = document.querySelector('.person')
+// Function to filter users by name or age
 
-function getInitial (name) {
-  return name
-    .split(' ')
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join('.')
+function filterUsers (name, age) {
+  const filteredUsers = person.filter((user) => {
+    const lowerCaseName = user.name.toLowerCase()
+    const lowerCaseSearchName = name.toLowerCase()
+    return (
+      (!lowerCaseName || lowerCaseName.includes(lowerCaseSearchName)) &&
+      (age === '' || user.age === age)
+    )
+  })
+
+  return filteredUsers
 }
 
-function displayUser ({ age, name }) {
-  return `
-  <div class="user" id="id05">
-    <div class='person'>
+// Function to display filtered users
+
+function displayUsers (filteredUsers) {
+  const resultsContainer = document.getElementById('results-container')
+  resultsContainer.innerHTML = ''
+
+  if (filteredUsers.length === 0) {
+    resultsContainer.innerHTML = "<p class='error'>No user found.</p>"
+    return
+  }
+
+  function getInitial (name) {
+    return name
+      .split(' ')
+      .map((n) => n[0])
+      .slice(0, 2)
+      .join('.')
+  }
+
+  filteredUsers.forEach((user) => {
+    const userDiv = document.createElement('div')
+    userDiv.classList.add('user')
+
+    userDiv.innerHTML = ` 
+    <div class="users">
+    <div class="person">
       <div class="box">
-        <div class='avatar'>${getInitial(name)}</div>
-          <div>
-            <h2>${name}</h2>
-            <p>${age} year${age > 1 ? 's' : ''}</p>
-          </div>
+        <div class="avatar">${getInitial(user.name)}</div>
+        <div class="status">
+          <h2>${user.name}</h2>
+          <p class="para">${user.age} years</p>
         </div>
-        <i class="fa fa-window-close" aria-hidden="true"></i>
       </div>
+      <button class="delete-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
     </div>
-  </div>
-`
-}
+  </div>`
 
-function displayUsers (persons) {
-  return persons.length
-    ? persons.map(displayUser).join('')
-    : renderMessage('Sorry! No User Found')
-}
+    const deleteBtn = userDiv.querySelector('.delete-btn')
+    deleteBtn.addEventListener('click', () => {
+      deleteUser(user)
+    })
 
-function compareNames (name, searchTerm) {
-  return name.toLowerCase().includes(searchTerm.toLowerCase())
-}
-
-function shouldResolve () {
-  return Math.random() < 0.85
-}
-
-function searchUsers (name, age) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (shouldResolve()) {
-        resolve(
-          person.filter(
-            (user) =>
-              !name | compareNames(user.name, name) &&
-              (!age || user.age === age)
-          )
-        )
-      } else {
-        reject(new Error([]))
-      }
-    }, 2000)
+    resultsContainer.appendChild(userDiv)
   })
 }
 
-function renderMessage (message) {
-  return `<div class='message'>${message}</div>`
+displayUsers(person)
+
+// Function to delete a user
+
+function deleteUser (user) {
+  const index = person.indexOf(user)
+  if (index > -1) {
+    person.splice(index, 1)
+    displayUsers(filterUsers('', ''))
+  }
 }
 
-userContainer.innerHTML = displayUsers(person)
+// Function to handle search button click
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault()
-  userContainer.innerHTML = renderMessage('Searching user....')
-  searchUsers(e.target.name.value, +e.target.age.value)
-    .then((result) => {
-      userContainer.innerHTML = displayUsers(result)
-    })
-    .catch((e) => {
-      userContainer.innerHTML = renderMessage(
-        'Error loading users! Please try again'
-      )
-    })
+function handleSearch () {
+  const nameInput = document.getElementById('name-input')
+  const ageInput = document.getElementById('age-input')
+
+  const name = nameInput.value.trim()
+  const age = ageInput.value.trim()
+  console.log(nameInput.value, age.valueOf())
+
+  const filteredUsers = filterUsers(name, age)
+  displayUsers(filteredUsers)
+}
+
+// Function to show loader while searching users
+
+function showLoader () {
+  const loader = document.getElementById('loader')
+  loader.classList.remove('hidden')
+}
+
+// Function to hide loader
+
+function hideLoader () {
+  const loader = document.getElementById('loader')
+  loader.classList.add('hidden')
+}
+
+// Event listener for search button click
+
+const searchBtn = document.querySelector('.search-btn')
+searchBtn.addEventListener('click', () => {
+  showLoader()
+  setTimeout(() => {
+    handleSearch()
+    hideLoader()
+  }, 1000)
 })

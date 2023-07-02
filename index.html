@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/style/style.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
@@ -21,28 +17,29 @@
         <div class="container1">
           <div>
             <label for="name">Name</label><br />
-            <input type="text" placeholder="Enter name here" name="name" />
+            <input
+              type="text"
+              placeholder="Enter name here"
+              name="name"
+              id="name-input"
+            />
           </div>
           <div>
             <label for="age">Age</label><br />
-            <input type="number" placeholder="Enter age here" name="age" />
+            <input
+              type="number"
+              placeholder="Enter age here"
+              name="age"
+              id="age-input"
+            />
           </div>
           <div>
-            <button type="submit">Search</button>
+            <button type="submit" class="search-btn">Search</button>
           </div>
         </div>
-        <div class="users">
-          <div class="person">
-            <div class="box">
-              <div class="avatar"></div>
-              <div class="status">
-                <h2>Name</h2>
-                <p class="para">Age</p>
-              </div>
-            </div>
-            <i class="fa fa-window-close" aria-hidden="true"></i>
-          </div>
-        </div>
+        <div id="loader" class="hidden"></div>
+
+        <div id="results-container"></div>
       </form>
     </div>
 
