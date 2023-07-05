@@ -2,45 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/style/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     />
-    <title>Form Searching</title>
+    <title>Form searching</title>
   </head>
   <body>
     <div class="container">
-      <form action="">
-        <div class="container1">
-          <div>
-            <label for="">Name</label><br />
-            <input
-              type="text"
-              placeholder="Enter name here"
-              id="name-input"
-            />
-          </div>
-          <div>
-            <label for="">Age</label><br />
-            <input
-              type="number"
-              placeholder="Enter age here"
-              id="age-input"
-            />
-          </div>
-          <div>
-            <button type="submit" class="search-btn">Search</button>
-          </div>
+      <div class="search-container">
+        <div>
+          <label for="">Name</label><br />
+          <input type="text" id="name-input" placeholder="Enter name here" />
         </div>
-        <div id="loader" class="hidden"></div>
+        <div>
+          <label for="">Age</label><br />
+          <input type="number" id="age-input" placeholder="Enter age here" />
+        </div>
+        <div>
+          <button id="search-btn" type="submit">Search</button>
+        </div>
+      </div>
 
-        <div id="results-container"></div>
-      </form>
+      <div id="loader" class="hidden"></div>
+
+      <div id="results-container"></div>
     </div>
 
-    <script src="assets/script/user.js"></script>
+    <script src="./assets/script/user.js"></script>
   </body>
 </html>

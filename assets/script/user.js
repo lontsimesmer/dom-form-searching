@@ -1,4 +1,4 @@
-const person = [
+const users = [
   { name: "Abanda Martial", age: 45 },
   { name: "Albertini Pondji", age: 25 },
   { name: "Amboya Saf", age: 30 },
@@ -50,18 +50,17 @@ const person = [
   { name: "Tang Laurent", age: 27 },
   { name: "Tchapchet Brown", age: 28 },
   { name: "Yimga Cabrel", age: 25 },
-  { name: "Zebidja Legrand", age: 26 },
+  { name: "Zebidja Legrand", age: 26 }
 ]
 
 // Function to filter users by name or age
-
 function filterUsers (name, age) {
-  const filteredUsers = person.filter((user) => {
+  const filteredUsers = users.filter((user) => {
     const lowerCaseName = user.name.toLowerCase()
     const lowerCaseSearchName = name.toLowerCase()
     return (
       (!lowerCaseName || lowerCaseName.includes(lowerCaseSearchName)) &&
-      (age === '' || user.age === age)
+        (age === '' || user.age === age)
     )
   })
 
@@ -69,13 +68,12 @@ function filterUsers (name, age) {
 }
 
 // Function to display filtered users
-
 function displayUsers (filteredUsers) {
   const resultsContainer = document.getElementById('results-container')
   resultsContainer.innerHTML = ''
 
   if (filteredUsers.length === 0) {
-    resultsContainer.innerHTML = "<p class='error'>No user found.</p>"
+    resultsContainer.innerHTML = `<p class='error'>No users found.</p>`
     return
   }
 
@@ -91,19 +89,18 @@ function displayUsers (filteredUsers) {
     const userDiv = document.createElement('div')
     userDiv.classList.add('user')
 
-    userDiv.innerHTML = ` 
-    <div class="users">
-    <div class="person">
-      <div class="box">
-        <div class="avatar">${getInitial(user.name)}</div>
-        <div class="status">
-          <h2>${user.name}</h2>
-          <p class="para">${user.age} years</p>
+    userDiv.innerHTML = `
+      <div class="person">
+        <div class="box">
+          <div class="avatar">${getInitial(user.name)}</div>
+            <div class="status">
+              <h2>${user.name}</h2>
+              <p>${user.age} years</p>
+            </div>
         </div>
+        <button class="delete-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
       </div>
-      <button class="delete-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
-    </div>
-  </div>`
+    `
 
     const deleteBtn = userDiv.querySelector('.delete-btn')
     deleteBtn.addEventListener('click', () => {
@@ -114,20 +111,18 @@ function displayUsers (filteredUsers) {
   })
 }
 
-displayUsers(person)
+displayUsers(users)
 
 // Function to delete a user
-
 function deleteUser (user) {
-  const index = person.indexOf(user)
+  const index = users.indexOf(user)
   if (index > -1) {
-    person.splice(index, 1)
+    users.splice(index, 1)
     displayUsers(filterUsers('', ''))
   }
 }
 
 // Function to handle search button click
-
 function handleSearch () {
   const nameInput = document.getElementById('name-input')
   const ageInput = document.getElementById('age-input')
@@ -141,22 +136,19 @@ function handleSearch () {
 }
 
 // Function to show loader while searching users
-
 function showLoader () {
   const loader = document.getElementById('loader')
   loader.classList.remove('hidden')
 }
 
 // Function to hide loader
-
 function hideLoader () {
   const loader = document.getElementById('loader')
   loader.classList.add('hidden')
 }
 
 // Event listener for search button click
-
-const searchBtn = document.querySelector('.search-btn')
+const searchBtn = document.getElementById('search-btn')
 searchBtn.addEventListener('click', () => {
   showLoader()
   setTimeout(() => {
